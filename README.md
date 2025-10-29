@@ -2,7 +2,7 @@
 
 
 
-[![CI](https://github.com/invil/invilso-landing/actions/workflows/ci.yml/badge.svg)](https://github.com/invil/invilso-landing/actions/workflows/ci.yml)FastAPI application that serves the marketing landing page and enqueues contact requests to an ARQ/Redis worker that forwards them to Telegram via HTTPX.
+FastAPI application that serves the marketing landing page and enqueues contact requests to an ARQ/Redis worker that forwards them to Telegram via HTTPX.
 
 ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 
