@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.meta_title }}{% endblock %}
+
+{% block content %}
+<section class="hero-section legal-hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-9">
+                <div class="hero-terminal legal-terminal">
+                    <div class="terminal-header-bar">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-path">invilso@ops:~/legal/{{ page.slug }}</span>
+                    </div>
+                    <h1 class="hero-title">{{ page.heading }}</h1>
+                    <p class="hero-lead">{{ page.tagline }}</p>
+                    <div class="hero-meta">
+                        <code>{{ page.updated_at }}</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 terminal-section legal-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <p class="lead text-muted mb-4">{{ page.intro }}</p>
+                {% for section in page.sections %}
+                <article class="legal-card">
+                    <h3>{{ section.title }}</h3>
+                    <ul>
+                        {% for item in section.items %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4">
+                <aside class="legal-sidebar">
+                    <h4 class="text-secondary text-uppercase small">Other documents</h4>
+                    <ul class="list-unstyled">
+                        {% for link in other_links %}
+                        <li><a class="link-terminal" href="{{ url_for('legal-page', slug=link['slug']) }}">{{ link['title'] }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <div class="legal-sidebar-cta">
+                        <p class="small text-muted mb-1">Need an NDA or custom agreement?</p>
+                        <a class="btn btn-terminal btn-terminal-solid" href="{{ url_for('home') }}#contact">Start the conversation</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

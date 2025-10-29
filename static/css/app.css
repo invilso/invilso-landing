@@ -1,0 +1,664 @@
+@font-face {
+    font-family: "Fira Code";
+    src: url("../fonts/FiraCode-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url("../fonts/FiraCode-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url("../fonts/FiraCode-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --primary-color: #00ff9d;
+    --secondary-color: #7fdbff;
+    --bg-color: #050505;
+    --panel-color: #0b0d14;
+    --panel-alt: #10131c;
+    --border-color: rgba(0, 255, 157, 0.25);
+    --text-dim: rgba(127, 219, 255, 0.7);
+    --accent-shadow: 0 0 25px rgba(0, 255, 157, 0.25);
+}
+
+body {
+    font-family: "Fira Code", "Courier New", monospace;
+    color: var(--secondary-color);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(120deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+        linear-gradient(60deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.75;
+    animation: drift 22s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes drift {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(-15px, -15px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: #66ffd1;
+}
+
+.terminal-navbar {
+    background: rgba(5, 5, 5, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 255, 157, 0.12);
+    transition: background 0.3s ease;
+}
+
+.terminal-navbar .navbar-brand {
+    color: var(--primary-color);
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.terminal-navbar .navbar-nav {
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.terminal-navbar .nav-link {
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.terminal-navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    opacity: 0;
+    transform: scaleX(0.6);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.terminal-navbar .nav-link:hover,
+.terminal-navbar .nav-link:focus {
+    color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.terminal-navbar .nav-link:hover::after,
+.terminal-navbar .nav-link:focus::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.btn-terminal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 1.35rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 999px;
+    color: var(--primary-color);
+    background: transparent;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: inset 0 0 12px rgba(0, 255, 157, 0.2), 0 0 18px rgba(0, 255, 157, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-terminal:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 255, 157, 0.1);
+    box-shadow: inset 0 0 24px rgba(0, 255, 157, 0.35), 0 0 35px rgba(0, 255, 157, 0.2);
+    color: var(--primary-color);
+}
+
+.hero-section {
+    position: relative;
+    padding: 7rem 0 6rem;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 255, 157, 0.12), transparent 60%),
+        radial-gradient(circle at 80% 0%, rgba(127, 219, 255, 0.15), transparent 55%);
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 157, 0.08), transparent 40%);
+    pointer-events: none;
+}
+
+.hero-terminal {
+    position: relative;
+    background: linear-gradient(145deg, var(--panel-color), var(--panel-alt));
+    border: 1px solid rgba(127, 219, 255, 0.12);
+    border-radius: 18px;
+    padding: 2.4rem 2.6rem;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.65), var(--accent-shadow);
+    overflow: hidden;
+}
+
+.hero-terminal::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(0, 255, 157, 0.18), transparent 70%);
+    filter: blur(8px);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.hero-terminal::after {
+    content: "";
+    position: absolute;
+    bottom: -45%;
+    right: -15%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(127, 219, 255, 0.18), transparent 70%);
+    filter: blur(12px);
+    animation: pulse 10s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.65;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+.terminal-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 1.5rem;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(127, 219, 255, 0.32);
+    position: relative;
+}
+
+.terminal-dot:nth-child(1) {
+    background: #ff5f56;
+}
+
+.terminal-dot:nth-child(2) {
+    background: #ffbd2e;
+}
+
+.terminal-dot:nth-child(3) {
+    background: #27c93f;
+}
+
+.terminal-path {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+}
+
+.hero-title {
+    font-size: 2.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 22px rgba(127, 219, 255, 0.4);
+}
+
+.hero-lead {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin-bottom: 2.2rem;
+    max-width: 90%;
+}
+
+.typing-line {
+    display: inline;
+    position: relative;
+}
+
+.typing-line::after {
+    content: "_";
+    display: inline-block;
+    margin-left: 0.25rem;
+    animation: blink 1.1s steps(2, start) infinite;
+    color: var(--primary-color);
+}
+
+@keyframes blink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+    50.01%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.btn-terminal-solid {
+    background: var(--primary-color);
+    color: #041005;
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.35);
+}
+
+.btn-terminal-solid:hover {
+    color: #041005;
+    background: #66ffd1;
+}
+
+.hero-meta {
+    margin-top: 1.8rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.hero-meta code {
+    background: rgba(0, 255, 157, 0.08);
+    border: 1px solid rgba(0, 255, 157, 0.18);
+    border-radius: 12px;
+    padding: 0.4rem 0.75rem;
+    color: var(--secondary-color);
+    font-family: "Fira Code", "Courier New", monospace;
+}
+
+.terminal-interactive {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(127, 219, 255, 0.12);
+    font-family: "Fira Code", "Courier New", monospace;
+    cursor: text;
+}
+
+.terminal-interactive-hint {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.terminal-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    color: var(--secondary-color);
+}
+
+.terminal-prompt {
+    color: var(--primary-color);
+    letter-spacing: 0.08em;
+    user-select: none;
+}
+
+.terminal-input {
+    min-width: 1ch;
+    outline: none;
+    border-bottom: 1px solid transparent;
+    color: var(--secondary-color);
+    white-space: pre-wrap;
+}
+
+.terminal-input:focus {
+    border-bottom-color: rgba(0, 255, 157, 0.4);
+}
+
+.terminal-output {
+    color: var(--text-dim);
+    margin: 0.35rem 0 0 1.5rem;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+}
+
+.terminal-section {
+    position: relative;
+    background: transparent;
+}
+
+.terminal-section + .terminal-section {
+    border-top: 1px solid rgba(127, 219, 255, 0.08);
+}
+
+.terminal-section .section-heading {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    font-size: 1.05rem;
+    display: inline-block;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid rgba(0, 255, 157, 0.35);
+    margin-bottom: 2.5rem;
+}
+
+.terminal-section p.lead {
+    color: var(--text-dim);
+}
+
+.skill-badge {
+    font-size: 0.78rem;
+    margin: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--secondary-color);
+    background: rgba(127, 219, 255, 0.1);
+    border: 1px solid rgba(127, 219, 255, 0.2);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    box-shadow: inset 0 0 12px rgba(127, 219, 255, 0.15);
+}
+
+.project-card {
+    border: 1px solid rgba(127, 219, 255, 0.16);
+    background: linear-gradient(160deg, var(--panel-color), var(--panel-alt));
+    border-radius: 16px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.55);
+    height: 100%;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0, 255, 157, 0.12), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 255, 157, 0.4);
+    box-shadow: 0 26px 55px rgba(0, 0, 0, 0.7), var(--accent-shadow);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card .card-title {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-card .card-subtitle,
+.project-card .card-text small {
+    color: var(--text-dim);
+}
+
+.project-card ul li {
+    color: var(--secondary-color);
+    margin-bottom: 0.6rem;
+}
+
+.project-card ul li i {
+    color: var(--primary-color);
+}
+
+.project-card .small {
+    color: var(--text-dim);
+    font-family: "Fira Code", "Courier New", monospace;
+}
+
+.terminal-section-alt .contact-form {
+    background: var(--panel-alt);
+    border: 1px solid rgba(127, 219, 255, 0.18);
+    border-radius: 16px;
+    padding: 2.2rem;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+}
+
+.contact-form label {
+    color: var(--secondary-color);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.contact-form .form-control {
+    background: rgba(5, 5, 5, 0.65);
+    border: 1px solid rgba(127, 219, 255, 0.2);
+    color: var(--secondary-color);
+    font-family: "Fira Code", "Courier New", monospace;
+}
+
+.contact-form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.12);
+    border-color: rgba(0, 255, 157, 0.6);
+    background: rgba(5, 5, 5, 0.82);
+}
+
+.contact-form button {
+    width: 100%;
+}
+
+.terminal-footer {
+    background: rgba(5, 5, 5, 0.95);
+    border-top: 1px solid rgba(127, 219, 255, 0.12);
+    color: var(--text-dim);
+}
+
+.terminal-footer a {
+    color: var(--secondary-color);
+}
+
+.terminal-footer a:hover {
+    color: var(--primary-color);
+}
+
+.legal-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.legal-links a {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.legal-links a:hover {
+    color: var(--primary-color);
+}
+
+.legal-hero {
+    padding-bottom: 3rem;
+}
+
+.legal-terminal {
+    margin-top: 1rem;
+}
+
+.legal-section .legal-card {
+    background: linear-gradient(160deg, var(--panel-color), var(--panel-alt));
+    border: 1px solid rgba(127, 219, 255, 0.16);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    margin-bottom: 1.75rem;
+}
+
+.legal-section .legal-card h3 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.legal-section .legal-card ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+}
+
+.legal-section .legal-card li {
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.legal-section .legal-card li:last-child {
+    margin-bottom: 0;
+}
+
+.legal-sidebar {
+    background: var(--panel-alt);
+    border: 1px solid rgba(127, 219, 255, 0.16);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    position: sticky;
+    top: 6rem;
+}
+
+.legal-sidebar h4 {
+    margin-bottom: 1rem;
+    letter-spacing: 0.12em;
+}
+
+.legal-sidebar ul li {
+    margin-bottom: 0.75rem;
+}
+
+.legal-sidebar ul li:last-child {
+    margin-bottom: 0;
+}
+
+.legal-sidebar-cta {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(127, 219, 255, 0.12);
+}
+
+.legal-sidebar-cta .btn {
+    width: 100%;
+}
+
+.text-secondary {
+    color: var(--text-dim) !important;
+}
+
+.text-muted {
+    color: var(--text-dim) !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--primary-color) !important;
+}
+
+.link-terminal {
+    color: var(--primary-color);
+}
+
+.link-terminal:hover {
+    color: #66ffd1;
+}
+
+hr {
+    border-color: rgba(127, 219, 255, 0.12);
+}
+
+@media (max-width: 991.98px) {
+    .hero-terminal {
+        padding: 1.8rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-lead {
+        max-width: 100%;
+    }
+
+    .terminal-navbar .navbar-nav {
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .btn-terminal {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .legal-sidebar {
+        position: static;
+        margin-top: 0.5rem;
+    }
+}

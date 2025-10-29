@@ -1,0 +1,401 @@
+{% extends "base.html" %}
+
+{% block title %}INVILSO SCRIPTS | Python Back-End Consultant{% endblock %}
+
+{% block content %}
+<header id="home" class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-10">
+                <div class="hero-terminal">
+                    <div class="terminal-header-bar">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-path">invilso@ops:~/deployments</span>
+                    </div>
+                    <h1 class="hero-title">Python Back-End Contractor & Consultant</h1>
+                    <p class="hero-lead">
+                        <span class="typing-line">
+                            Architecting scalable API solutions and automating growth-critical workflows since 2021.
+                        </span>
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#portfolio" class="btn btn-terminal btn-terminal-solid">View Projects <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-terminal">Contact Me</a>
+                    </div>
+                    <div class="hero-meta">
+                        <code>invilso@cli:~$ uptime --since=2021-01-01</code>
+                    </div>
+                    <div class="terminal-interactive">
+                        <p class="terminal-interactive-hint">Click here and type your own command (just for fun)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="skills" class="py-5 terminal-section">
+    <div class="container">
+        <h2 class="section-heading">Core Expertise</h2>
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5 class="text-secondary"><i class="fas fa-code me-2"></i>Backend & Frameworks</h5>
+                <p class="mb-0">Python, Django, Django REST Framework, FastAPI, Aiogram, SQLAlchemy, Lua.</p>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <h5 class="text-secondary"><i class="fas fa-database me-2"></i>Data & Queuing</h5>
+                <p class="mb-0">PostgreSQL, Redis, Celery, arq. Database design, query optimisation, and indexing.</p>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <h5 class="text-secondary"><i class="fas fa-cloud me-2"></i>DevOps & Cloud</h5>
+                <p class="mb-0">Docker, AWS (S3, Compute), CI/CD, Nginx, Serverless, Linux.</p>
+            </div>
+        </div>
+
+        <hr class="my-4">
+
+        <h5 class="text-secondary mt-4 mb-3">Key Technologies:</h5>
+        <span class="badge skill-badge">Python</span>
+        <span class="badge skill-badge">FastAPI</span>
+        <span class="badge skill-badge">Django DRF</span>
+        <span class="badge skill-badge">PostgreSQL</span>
+        <span class="badge skill-badge">Docker</span>
+        <span class="badge skill-badge">AWS</span>
+        <span class="badge skill-badge">AI Integrations</span>
+        <span class="badge skill-badge">Celery</span>
+        <span class="badge skill-badge">Lua</span>
+    </div>
+</section>
+
+<section id="portfolio" class="py-5 terminal-section">
+    <div class="container">
+        <h2 class="section-heading">Key Client Engagements</h2>
+        <p class="lead mb-5 text-center text-muted">A selection of high-impact projects delivered through INVILSO SCRIPTS.</p>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary"><i class="fas fa-robot me-2"></i>Lead Developer @ AI Translator Project</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Multi-Platform AI Translation Bot (04/2025 - 10/2025)</h6>
+                        <p class="card-text"><small class="text-muted">Role: Architecture, Backend Lead.</small></p>
+                        <ul class="list-unstyled small">
+                            <li><i class="fas fa-check text-success me-2"></i>Acted as the primary backend contractor, overseeing technical decisions.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Engineered the full voice processing pipeline (STT/TTS) using Gemini/OpenAI.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Built a dedicated user web panel (FastAPI) for complex settings and subscription control.</li>
+                        </ul>
+                        <p class="small mt-3">Stack: FastAPI, Aiogram, Docker, PostgreSQL, Redis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary"><i class="fas fa-code me-2"></i>Python Developer @ LaPrompt</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">AI Prompt Marketplace (04/2024 - Present)</h6>
+                        <p class="card-text"><small class="text-muted">Role: Core Feature Development, Optimisation.</small></p>
+                        <ul class="list-unstyled small">
+                            <li><i class="fas fa-check text-success me-2"></i>Crucially contributed to the project's successful launch and ongoing refinement.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Developed and maintained <strong>150+ robust endpoints</strong> for full-stack integration.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Implemented automated content moderation, eliminating manual validation time.</li>
+                        </ul>
+                        <p class="small mt-3">Stack: Django, DRF, Stripe, PostgreSQL, Celery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary"><i class="fas fa-gamepad me-2"></i>Lua/Python Developer @ Trinity GTA</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Online Gaming Platform (09/2021 - 02/2022)</h6>
+                        <p class="card-text"><small class="text-muted">Role: Anti-Cheat Optimisation, Tooling.</small></p>
+                        <ul class="list-unstyled small">
+                            <li><i class="fas fa-check text-success me-2"></i>Optimised anti-cheat algorithms, leading to a 50% reduction in false detections.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Reduced false bans by 20% via smarter violation detection.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Developed internal tools that enhanced the efficiency of over 30 administrators.</li>
+                        </ul>
+                        <p class="small mt-3">Stack: Lua, Python, Django, DRF, ImGui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="https://github.com/invilso" target="_blank" rel="noopener" class="btn btn-terminal btn-terminal-solid">More Projects on GitHub <i class="fab fa-github ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5 terminal-section terminal-section-alt">
+    <div class="container">
+        <h2 class="section-heading text-center">Get in Touch</h2>
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="contact-form">
+                    <form id="contact-form" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required minlength="2" maxlength="100" autocomplete="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required minlength="10" maxlength="2000"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-terminal btn-terminal-solid">Send Message</button>
+                    </form>
+                    <div id="form-status" class="text-center small mt-3" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p class="text-secondary small">Direct Email: <a href="mailto:support@invilso.pp.ua" class="link-terminal">support@invilso.pp.ua</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const typewriterTargets = document.querySelectorAll(".typing-line");
+        typewriterTargets.forEach((element) => {
+            const fullText = element.textContent.trim();
+            if (!fullText) {
+                return;
+            }
+
+            element.textContent = "";
+            const characters = Array.from(fullText);
+            const minDelay = 20;
+            const maxDelay = 40;
+            let index = 0;
+
+            const scheduleNext = () => {
+                if (index >= characters.length) {
+                    return;
+                }
+
+                element.textContent += characters[index];
+                index += 1;
+
+                if (index >= characters.length) {
+                    return;
+                }
+
+                const progress = index / characters.length;
+                const waveform = (Math.sin(progress * Math.PI - Math.PI / 2) + 1) / 2;
+                const delay = minDelay + (maxDelay - minDelay) * (1 - waveform);
+                window.setTimeout(scheduleNext, delay);
+            };
+
+            window.setTimeout(scheduleNext, 300);
+        });
+
+        const interactiveArea = document.querySelector(".terminal-interactive");
+        if (interactiveArea) {
+            const maxLines = 6;
+            const hint = interactiveArea.querySelector(".terminal-interactive-hint");
+
+            const printOutput = (line, output) => {
+                if (!output) {
+                    return;
+                }
+                const outputLine = document.createElement("div");
+                outputLine.className = "terminal-output";
+                outputLine.textContent = output;
+                line.insertAdjacentElement("afterend", outputLine);
+            };
+
+            const randomFrom = (items) => items[Math.floor(Math.random() * items.length)];
+
+            const builtins = {
+                help: () =>
+                    [
+                        "Available commands:",
+                        "  help       Show this message",
+                        "  echo       Repeat the text you pass",
+                        "  date       Display current date and time",
+                        "  uptime     Same uptime string as above",
+                        "  clear      Wipe the faux terminal",
+                        "  whoami     Learn who is behind INVILSO SCRIPTS",
+                        "  stack      Peek at the preferred toolchain",
+                        "  projects   Highlight a few recent deliveries",
+                        "  contact    Get the direct contact info",
+                        "  quote      Receive a random motivational blip",
+                    ].join("\n"),
+                echo: (args) => args.join(" ") || "",
+                date: () => new Date().toLocaleString(),
+                uptime: () => "up since 2021-01-01",
+                clear: (args, context) => {
+                    context?.clear();
+                    return "";
+                },
+                whoami: () => "INVILSO SCRIPTS // Python back-end contractor & automation consultant.",
+                stack: () =>
+                    [
+                        "Primary stack:",
+                        "  FastAPI · Django · PostgreSQL",
+                        "  Redis · arq · Celery",
+                        "  Docker · AWS · CI/CD",
+                    ].join("\n"),
+                projects: () =>
+                    [
+                        "Latest projects:",
+                        "  - AI Translator Bot (voice + GPT workflows)",
+                        "  - LaPrompt marketplace (150+ endpoints)",
+                        "  - Trinity GTA tooling (anti-cheat automation)",
+                    ].join("\n"),
+                contact: () => "Drop a line: support@invilso.pp.ua or use the contact form below.",
+                quote: () =>
+                    randomFrom([
+                        "Move fast, but keep your tests at 100%.",
+                        "Automation is future-proofing disguised as convenience.",
+                        "Great APIs are conversations that never break.",
+                        "Ship small, ship often, measure everything.",
+                        "Elegance is eliminating the manual step you forgot about.",
+                    ]),
+            };
+
+            const hideHint = () => {
+                if (hint && hint.parentElement) {
+                    hint.parentElement.removeChild(hint);
+                }
+            };
+
+            const focusEditable = (element) => {
+                const selection = window.getSelection();
+                if (!selection) {
+                    return;
+                }
+                const range = document.createRange();
+                range.selectNodeContents(element);
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            };
+
+            const clearTerminal = () => {
+                interactiveArea.querySelectorAll(".terminal-line, .terminal-output").forEach((node) => node.remove());
+            };
+
+            const createPromptLine = () => {
+                hideHint();
+                const line = document.createElement("div");
+                line.className = "terminal-line";
+
+                const prompt = document.createElement("span");
+                prompt.className = "terminal-prompt";
+                prompt.textContent = "invilso@cli:~$";
+
+                const input = document.createElement("span");
+                input.className = "terminal-input";
+                input.contentEditable = "true";
+                input.spellcheck = false;
+                input.setAttribute("role", "textbox");
+                input.setAttribute("aria-label", "Pretend terminal command");
+
+                line.append(prompt, document.createTextNode(" "), input);
+                interactiveArea.append(line);
+
+                const lines = interactiveArea.querySelectorAll(".terminal-line");
+                if (lines.length > maxLines) {
+                    lines[0].remove();
+                }
+
+                focusEditable(input);
+
+                input.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        const raw = input.textContent ?? "";
+                        const trimmed = raw.trim();
+                        if (trimmed.length === 0) {
+                            createPromptLine();
+                            return;
+                        }
+
+                        const [command, ...args] = trimmed.split(/\s+/);
+                        const handler = builtins[command.toLowerCase()] ?? null;
+
+                        if (handler) {
+                            const context = { clear: clearTerminal };
+                            const result = handler(args, context);
+                            if (command.toLowerCase() === "clear") {
+                                createPromptLine();
+                                return;
+                            }
+                            if (result) {
+                                printOutput(line, result);
+                            }
+                        } else {
+                            printOutput(line, `command not found: ${command}`);
+                        }
+
+                        createPromptLine();
+                    }
+                });
+
+                return input;
+            };
+
+            interactiveArea.addEventListener("click", (event) => {
+                const target = event.target instanceof Element ? event.target : null;
+                const existingInput = target ? target.closest(".terminal-input") : null;
+                if (existingInput instanceof HTMLElement) {
+                    focusEditable(existingInput);
+                    return;
+                }
+                createPromptLine();
+            });
+        }
+
+        const form = document.getElementById("contact-form");
+        const statusElement = document.getElementById("form-status");
+        const endpoint = "{{ url_for('enqueue_contact_message') }}";
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const payload = {
+                name: (formData.get("name") || "").toString().trim(),
+                email: (formData.get("email") || "").toString().trim(),
+                message: (formData.get("message") || "").toString().trim()
+            };
+
+            statusElement.textContent = "Sending message...";
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorPayload = await response.json().catch(() => ({}));
+                    const detail = errorPayload.detail ?? "Unable to send message.";
+                    const message = Array.isArray(detail)
+                        ? detail.map((item) => item.msg ?? String(item)).join(", ")
+                        : String(detail);
+                    throw new Error(message);
+                }
+
+                statusElement.textContent = "Message queued successfully. I'll be in touch soon!";
+                form.reset();
+            } catch (error) {
+                const fallback = "Failed to send message. Please try again later.";
+                statusElement.textContent = error instanceof Error ? error.message : fallback;
+            }
+        });
+    });
+</script>
+{% endblock %}
