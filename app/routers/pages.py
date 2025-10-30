@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Iterable
 
 from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 
 
@@ -27,6 +28,9 @@ class LegalPage:
 
 
 templates = Jinja2Templates(directory=str(Path(__file__).resolve().parent.parent / "templates"))
+STATIC_ROOT = Path(__file__).resolve().parent.parent.parent / "static"
+ROBOTS_PATH = STATIC_ROOT / "robots.txt"
+SITEMAP_PATH = STATIC_ROOT / "sitemap.xml"
 
 router = APIRouter(include_in_schema=False)
 
@@ -212,6 +216,16 @@ async def home(request: Request):
         "home.html",
         {"legal_links": LEGAL_LINKS},
     )
+
+
+@router.get("/robots.txt", include_in_schema=False)
+async def robots_txt() -> FileResponse:
+    return FileResponse(ROBOTS_PATH, media_type="text/plain")
+
+
+@router.get("/sitemap.xml", include_in_schema=False)
+async def sitemap_xml() -> FileResponse:
+    return FileResponse(SITEMAP_PATH, media_type="application/xml")
 
 
 @router.get("/legal/{slug}", name="legal-page")

@@ -1,5 +1,72 @@
 {% extends "base.html" %}
 
+{% block head_vars %}
+    {% set canonical_url = "https://invilso.pp.ua/" %}
+    {% set meta_description = "INVILSO SCRIPTS консультує з Python back-end, будує FastAPI та Django сервіси, проектує асинхронні черги ARQ/Redis і автоматизує бізнес-процеси з Telegram та AI." %}
+    {% set meta_keywords = [
+        "Python consultant",
+        "FastAPI contractor",
+        "Async API development",
+        "ARQ Redis automation",
+        "Telegram bot integrations"
+    ] %}
+    {% set meta_locale = "en_US" %}
+    {% set meta_image = request.url_for('static', path='icons/android-chrome-512x512.png') | string %}
+    {% set og_title = "INVILSO SCRIPTS — Python Back-End Consultant & Automation Engineer" %}
+    {% set og_description = meta_description %}
+    {% set twitter_title = og_title %}
+    {% set twitter_description = meta_description %}
+    {% set structured_data = [
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "INVILSO SCRIPTS",
+            "url": canonical_url,
+            "image": meta_image,
+            "logo": meta_image,
+            "description": meta_description,
+            "areaServed": ["Europe", "North America"],
+            "sameAs": [
+                "https://github.com/invilso",
+                "https://linkedin.com/in/invilso",
+                "https://blog.invilso.pp.ua/"
+            ],
+            "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "price": "Custom",
+                "priceCurrency": "USD",
+                "url": canonical_url ~ "#contact",
+                "description": "Tailored Python back-end consulting, API development, and automation services."
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "sales",
+                "email": "support@invilso.pp.ua",
+                "availableLanguage": ["uk", "en"]
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "INVILSO SCRIPTS",
+            "url": canonical_url,
+            "description": meta_description,
+            "publisher": {
+                "@type": "Organization",
+                "name": "INVILSO SCRIPTS",
+                "logo": meta_image
+            },
+            "inLanguage": "en-US",
+            "potentialAction": {
+                "@type": "ContactAction",
+                "name": "Start a project",
+                "target": canonical_url ~ "#contact"
+            }
+        }
+    ] %}
+{% endblock %}
+
 {% block title %}INVILSO SCRIPTS | Python Back-End Consultant{% endblock %}
 
 {% block content %}

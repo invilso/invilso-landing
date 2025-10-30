@@ -3,7 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}INVILSO SCRIPTS | Python Back-End Consultant{% endblock %}</title>
+    {% block head_vars %}{% endblock %}
+
+    {% set page_title %}{% block title %}INVILSO SCRIPTS | Python Back-End Consultant{% endblock %}{% endset %}
+    {% set page_title = page_title | trim %}
+    {% if not page_title %}
+        {% set page_title = "INVILSO SCRIPTS | Python Back-End Consultant" %}
+    {% endif %}
+
+    {% set default_description = "Python back-end консалтинг, дизайн асинхронних API та автоматизація робочих процесів за допомогою FastAPI, Redis та ARQ." %}
+    {% if meta_description is defined and meta_description %}
+        {% set resolved_description = meta_description %}
+    {% else %}
+        {% set resolved_description = default_description %}
+    {% endif %}
+
+    {% set default_keywords = [
+        "INVILSO SCRIPTS",
+        "Python back-end consultant",
+        "FastAPI development",
+        "ARQ Redis worker",
+        "Async API automation"
+    ] %}
+    {% if meta_keywords is defined %}
+        {% if meta_keywords is string and meta_keywords %}
+            {% set resolved_keywords = meta_keywords %}
+        {% elif meta_keywords %}
+            {% set resolved_keywords = (meta_keywords | list) | join(', ') %}
+        {% else %}
+            {% set resolved_keywords = default_keywords | join(', ') %}
+        {% endif %}
+    {% else %}
+        {% set resolved_keywords = default_keywords | join(', ') %}
+    {% endif %}
+
+    {% set default_canonical = request.url.scheme ~ '://' ~ request.url.netloc ~ request.url.path %}
+    {% if canonical_url is defined and canonical_url %}
+        {% set resolved_canonical = canonical_url %}
+    {% else %}
+        {% set resolved_canonical = default_canonical %}
+    {% endif %}
+    {% set resolved_canonical = resolved_canonical | string %}
+
+    {% set default_image = request.url_for('static', path='icons/android-chrome-512x512.png') %}
+    {% if meta_image is defined and meta_image %}
+        {% set resolved_image = meta_image %}
+    {% else %}
+        {% set resolved_image = default_image %}
+    {% endif %}
+    {% set resolved_image = resolved_image | string %}
+
+    {% if meta_logo is defined and meta_logo %}
+        {% set resolved_logo = meta_logo %}
+    {% else %}
+        {% set resolved_logo = resolved_image %}
+    {% endif %}
+    {% set resolved_logo = resolved_logo | string %}
+
+    {% if meta_robots is defined and meta_robots %}
+        {% set resolved_robots = meta_robots %}
+    {% else %}
+        {% set resolved_robots = 'index, follow' %}
+    {% endif %}
+
+    {% if meta_locale is defined and meta_locale %}
+        {% set resolved_locale = meta_locale %}
+    {% else %}
+        {% set resolved_locale = 'uk-UA' %}
+    {% endif %}
+
+    {% if og_title is defined and og_title %}
+        {% set resolved_og_title = og_title %}
+    {% else %}
+        {% set resolved_og_title = page_title %}
+    {% endif %}
+
+    {% if og_description is defined and og_description %}
+        {% set resolved_og_description = og_description %}
+    {% else %}
+        {% set resolved_og_description = resolved_description %}
+    {% endif %}
+
+    {% if og_type is defined and og_type %}
+        {% set resolved_og_type = og_type %}
+    {% else %}
+        {% set resolved_og_type = 'website' %}
+    {% endif %}
+
+    {% if site_name is defined and site_name %}
+        {% set resolved_site_name = site_name %}
+    {% else %}
+        {% set resolved_site_name = 'INVILSO SCRIPTS' %}
+    {% endif %}
+
+    {% if twitter_title is defined and twitter_title %}
+        {% set resolved_twitter_title = twitter_title %}
+    {% else %}
+        {% set resolved_twitter_title = resolved_og_title %}
+    {% endif %}
+
+    {% if twitter_description is defined and twitter_description %}
+        {% set resolved_twitter_description = twitter_description %}
+    {% else %}
+        {% set resolved_twitter_description = resolved_og_description %}
+    {% endif %}
+
+    {% if twitter_card is defined and twitter_card %}
+        {% set resolved_twitter_card = twitter_card %}
+    {% else %}
+        {% set resolved_twitter_card = 'summary_large_image' %}
+    {% endif %}
+
+    {% if theme_color is defined and theme_color %}
+        {% set resolved_theme_color = theme_color %}
+    {% else %}
+        {% set resolved_theme_color = '#00ff9d' %}
+    {% endif %}
+
+    {% set default_schema = {
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        'name': 'INVILSO SCRIPTS',
+        'url': resolved_canonical,
+        'image': resolved_image,
+        'logo': resolved_logo,
+        'description': resolved_description,
+        'email': 'support@invilso.pp.ua',
+        'sameAs': [
+            'https://github.com/invilso',
+            'https://linkedin.com/in/invilso',
+            'https://blog.invilso.pp.ua/'
+        ],
+        'contactPoint': [
+            {
+                '@type': 'ContactPoint',
+                'contactType': 'sales',
+                'email': 'support@invilso.pp.ua',
+                'areaServed': ['Europe', 'North America'],
+                'availableLanguage': ['uk', 'en']
+            }
+        ],
+        'founder': {
+            '@type': 'Person',
+            'name': 'INVILSO',
+            'jobTitle': 'Python Back-End Consultant',
+            'email': 'support@invilso.pp.ua'
+        }
+    } %}
+
+    {% if structured_data is defined and structured_data %}
+        {% set schema_payload = structured_data %}
+    {% else %}
+        {% set schema_payload = default_schema %}
+    {% endif %}
+
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ resolved_description }}">
+    <meta name="keywords" content="{{ resolved_keywords }}">
+    <meta name="author" content="INVILSO SCRIPTS">
+    <meta name="robots" content="{{ resolved_robots }}">
+    <meta name="theme-color" content="{{ resolved_theme_color }}">
+    <link rel="canonical" href="{{ resolved_canonical }}">
+    <meta property="og:type" content="{{ resolved_og_type }}">
+    <meta property="og:site_name" content="{{ resolved_site_name }}">
+    <meta property="og:locale" content="{{ resolved_locale }}">
+    <meta property="og:title" content="{{ resolved_og_title }}">
+    <meta property="og:description" content="{{ resolved_og_description }}">
+    <meta property="og:url" content="{{ resolved_canonical }}">
+    <meta property="og:image" content="{{ resolved_image }}">
+    <meta property="og:image:alt" content="INVILSO SCRIPTS brand mark">
+    <meta name="twitter:card" content="{{ resolved_twitter_card }}">
+    <meta name="twitter:title" content="{{ resolved_twitter_title }}">
+    <meta name="twitter:description" content="{{ resolved_twitter_description }}">
+    <meta name="twitter:image" content="{{ resolved_image }}">
+
+    {% if hreflang_links is defined and hreflang_links %}
+        {% for alt in hreflang_links %}
+            <link rel="alternate" href="{{ alt.href }}" hreflang="{{ alt.lang }}">
+        {% endfor %}
+    {% endif %}
+
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', path='icons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='icons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='icons/favicon-16x16.png') }}">
@@ -11,9 +190,13 @@
     <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', path='icons/android-chrome-192x192.png') }}">
     <link rel="icon" type="image/png" sizes="512x512" href="{{ url_for('static', path='icons/android-chrome-512x512.png') }}">
     <link rel="shortcut icon" href="{{ url_for('static', path='icons/favicon.ico') }}">
+
+    {% block extra_meta %}{% endblock %}
+
     <link rel="stylesheet" href="{{ url_for('static', path='vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='vendor/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}">
+    <script type="application/ld+json">{{ schema_payload | tojson(indent=2) }}</script>
 </head>
 <body>
     {% block body %}{% endblock %}
