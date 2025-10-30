@@ -15,6 +15,14 @@
       "updated_at": "Last updated: May 7, 2025",
       "sections": [
         {
+          "title": "Legal Entity & Contact",
+          "items": [
+            "All services are provided by Private Entrepreneur (ФОП) Shcherban Artur Andriyovych, Tax ID: 3778002154, registered in Ukraine.",
+            "Official correspondence address: 198 Na Seli Street, Stavyk village, Yavoriv district, Lviv region, 81080, Ukraine.",
+            "Contact for general inquiries: support@invilso.pp.ua."
+          ]
+        },
+        {
           "title": "Scope of Services",
           "items": [
             "Professional software architecture, API development, automation, and related consulting are provided on a project basis.",
@@ -50,8 +58,16 @@
           "title": "Intellectual Property",
           "items": [
             "Upon full payment, you receive full rights to the bespoke deliverables created for the project.",
-            "Pre-existing tooling, libraries, or know-how remain the property of INVILSO SCRIPTS and may be reused across engagements.",
+            "Pre-existing tooling, libraries, or know-how remain the property of INVILSO SCRIPTS and are licensed to you non-exclusively and perpetually for use within the project deliverables.",
             "Open-source components stay subject to their original licenses, which are referenced in project documentation."
+          ]
+        },
+        {
+          "title": "Confidentiality",
+          "items": [
+            "Both parties agree to treat all non-public commercial, technical, and financial information disclosed during the engagement as strictly confidential.",
+            "This obligation survives the termination of the engagement for a period of three (3) years.",
+            "This does not apply to information that is publicly known, developed independently, or legally required to be disclosed."
           ]
         },
         {
@@ -60,6 +76,14 @@
             "All services are provided with industry-standard care and tested against mutually defined criteria.",
             "Liability for indirect, incidental, or consequential damages is disclaimed to the fullest extent permitted by law.",
             "If a defect attributable to my work is discovered within 30 days of delivery, I will address it without additional cost."
+          ]
+        },
+        {
+          "title": "Governing Law & Dispute Resolution",
+          "items": [
+            "The Terms and the relationship between the parties shall be governed by and construed in accordance with the laws of Ukraine.",
+            "The parties agree to first attempt to resolve any dispute through good-faith negotiation.",
+            "Any unresolved disputes arising from these Terms or the services shall be exclusively submitted to the competent commercial court of Ukraine at the place of the Service Provider's registration."
           ]
         }
       ]
