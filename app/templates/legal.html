@@ -1,5 +1,28 @@
 {% extends "base.html" %}
 
+{% block head_vars %}
+    {% set canonical_url = "https://invilso.pp.ua/legal/" ~ page.slug %}
+    {% set meta_description = (page.tagline ~ " " ~ page.intro) | trim %}
+    {% set meta_keywords = [page.heading, "INVILSO SCRIPTS legal"] %}
+    {% set og_title = page.meta_title %}
+    {% set og_description = meta_description %}
+    {% set twitter_title = og_title %}
+    {% set twitter_description = meta_description %}
+    {% set structured_data = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": page.heading,
+        "url": canonical_url,
+        "inLanguage": "en-US",
+        "description": meta_description,
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "INVILSO SCRIPTS",
+            "url": "https://invilso.pp.ua/"
+        }
+    } %}
+{% endblock %}
+
 {% block title %}{{ page.meta_title }}{% endblock %}
 
 {% block content %}
