@@ -6,6 +6,8 @@ import pytest_asyncio
 
 from app.config import get_settings
 from app.factory import create_app
+from app.services.rate_limit import reset_rate_limit_service
+from limits.aio.storage import MemoryStorage
 
 
 class DummyRedis:
@@ -35,10 +37,12 @@ def reset_settings(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv("REDIS_PORT", "6379")
     monkeypatch.setenv("REDIS_DB", "0")
     monkeypatch.delenv("REDIS_PASSWORD", raising=False)
+    reset_rate_limit_service(MemoryStorage())
     try:
         yield
     finally:
         get_settings.cache_clear()
+        reset_rate_limit_service(MemoryStorage())
 
 
 @pytest_asyncio.fixture

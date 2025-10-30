@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+from types import SimpleNamespace
 
 import httpx
 import pytest
 
 from app.config import get_settings
 from app.factory import create_app
+from app.services.rate_limit import resolve_client_ip, reset_rate_limit_service
 from app.services.telegram import send_telegram_message
 from app.workers import registry
 from tests.conftest import DummyRedis
@@ -38,6 +40,61 @@ async def test_contact_endpoint_enqueues_job(client: httpx.AsyncClient, dummy_re
     assert response.json() == {"queued": True}
     job_name = registry.job_name(send_telegram_message)
     assert dummy_redis.jobs == [(job_name, payload)]
+
+
+@pytest.mark.asyncio
+async def test_contact_endpoint_rate_limits(client: httpx.AsyncClient, dummy_redis: DummyRedis) -> None:
+    payload = {
+        "name": "Rate Limited",
+        "email": "rate@example.com",
+        "message": "Message content exceeding the minimum length requirements."
+    }
+
+    for _ in range(3):
+        response = await client.post("/api/contact", json=payload)
+        assert response.status_code == httpx.codes.ACCEPTED
+
+    response = await client.post("/api/contact", json=payload)
+
+    assert response.status_code == httpx.codes.TOO_MANY_REQUESTS
+    assert "Too many contact requests" in response.json()["detail"]
+
+
+@pytest.mark.asyncio
+async def test_contact_endpoint_rate_limits_with_forwarded_header(client: httpx.AsyncClient) -> None:
+    payload = {
+        "name": "Header Limited",
+        "email": "header@example.com",
+        "message": "Message body that is long enough to pass validation requirements."
+    }
+    headers = {"X-Forwarded-For": "203.0.113.10, 203.0.113.11"}
+
+    for _ in range(3):
+        response = await client.post("/api/contact", json=payload, headers=headers)
+        assert response.status_code == httpx.codes.ACCEPTED
+
+    response = await client.post("/api/contact", json=payload, headers=headers)
+
+    assert response.status_code == httpx.codes.TOO_MANY_REQUESTS
+
+
+def test_resolve_client_identifier_prefers_forwarded_for() -> None:
+    request = SimpleNamespace(headers={"x-forwarded-for": "198.51.100.1, 198.51.100.2"}, client=SimpleNamespace(host="127.0.0.1"))
+    assert resolve_client_ip(request) == "198.51.100.1"  # type: ignore[arg-type]
+
+
+def test_resolve_client_identifier_falls_back_to_client_host() -> None:
+    request = SimpleNamespace(headers={}, client=SimpleNamespace(host="203.0.113.5"))
+    assert resolve_client_ip(request) == "203.0.113.5"  # type: ignore[arg-type]
+
+
+def test_resolve_client_identifier_handles_missing_client() -> None:
+    request = SimpleNamespace(headers={}, client=None)
+    assert resolve_client_ip(request) == "unknown"  # type: ignore[arg-type]
+
+
+def test_reset_rate_limits_defaults_to_memory_storage() -> None:
+    reset_rate_limit_service()
 
 
 @pytest.mark.asyncio
