@@ -38,3 +38,13 @@ def test_get_ordered_pages_matches_links() -> None:
     ordered_pages = legal_pages.get_ordered_pages()
     assert [page.slug for page in ordered_pages] == ["terms", "privacy", "cookies"]
     assert all(page.sections for page in ordered_pages)
+
+
+def test_legal_content_helpers_cover_all_paths() -> None:
+    content = legal_models.load_legal_content()
+    all_pages = tuple(content.iter_pages())
+    assert len(all_pages) == 3
+    terms = content.get_page("terms")
+    assert terms is not None
+    assert terms.slug == "terms"
+    assert content.get_page("missing") is None
