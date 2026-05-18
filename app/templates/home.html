@@ -125,11 +125,15 @@
         <span class="badge skill-badge">Python</span>
         <span class="badge skill-badge">FastAPI</span>
         <span class="badge skill-badge">Django DRF</span>
+        <span class="badge skill-badge">Django Channels</span>
         <span class="badge skill-badge">PostgreSQL</span>
+        <span class="badge skill-badge">PgBouncer</span>
         <span class="badge skill-badge">Docker</span>
         <span class="badge skill-badge">AWS</span>
         <span class="badge skill-badge">AI Integrations</span>
         <span class="badge skill-badge">Celery</span>
+        <span class="badge skill-badge">Stripe</span>
+        <span class="badge skill-badge">Monobank</span>
         <span class="badge skill-badge">Lua</span>
     </div>
 </section>
@@ -143,13 +147,29 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card project-card">
                     <div class="card-body">
-                        <h4 class="card-title text-primary"><i class="fas fa-robot me-2"></i>Lead Developer @ AI Translator Project</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Multi-Platform AI Translation Bot (04/2025 - 10/2025)</h6>
-                        <p class="card-text"><small class="text-muted">Role: Architecture, Backend Lead.</small></p>
+                        <h4 class="card-title text-primary"><i class="fas fa-store me-2"></i>Backend Developer @ NextCRM</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Multi-Tenant SaaS CRM for E-commerce (08/2025 - Present)</h6>
+                        <p class="card-text"><small class="text-muted">Role: Backend Development, Architecture.</small></p>
                         <ul class="list-unstyled small">
-                            <li><i class="fas fa-check text-success me-2"></i>Acted as the primary backend contractor, overseeing technical decisions.</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Engineered the full voice processing pipeline (STT/TTS) using Gemini/OpenAI.</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Built a dedicated user web panel (FastAPI) for complex settings and subscription control.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Proposed and led migration from schema-per-tenant to <strong>shared schema + PostgreSQL RLS</strong>.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Optimized catalog sync from <strong>3 hours to 15 minutes</strong>; integrated Nova Post and Checkbox APIs.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Established <strong>1,900+ automated pytest cases</strong> covering core business logic.</li>
+                        </ul>
+                        <p class="small mt-3">Stack: Python 3.14, Django 5, PostgreSQL (RLS), Redis, Celery, Docker.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary"><i class="fas fa-robot me-2"></i>Backend Developer @ AI Translator Bot</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Multi-Platform AI Translation Bot (04/2025 - 10/2025)</h6>
+                        <p class="card-text"><small class="text-muted">Role: Backend Development.</small></p>
+                        <ul class="list-unstyled small">
+                            <li><i class="fas fa-check text-success me-2"></i>Built multi-platform bot (Telegram, Discord, WhatsApp) for real-time translation of text and media.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Implemented full voice processing pipeline: STT → translation → TTS via OpenAI and Gemini.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Built dedicated user web panel (FastAPI) for subscription and settings management.</li>
                         </ul>
                         <p class="small mt-3">Stack: FastAPI, Aiogram, Docker, PostgreSQL, Redis.</p>
                     </div>
@@ -160,12 +180,11 @@
                 <div class="card project-card">
                     <div class="card-body">
                         <h4 class="card-title text-primary"><i class="fas fa-code me-2"></i>Python Developer @ LaPrompt</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">AI Prompt Marketplace (04/2024 - Present)</h6>
-                        <p class="card-text"><small class="text-muted">Role: Core Feature Development, Optimisation.</small></p>
+                        <h6 class="card-subtitle mb-2 text-muted">AI Prompt Marketplace (04/2024 - 03/2026)</h6>
+                        <p class="card-text"><small class="text-muted">Role: Core Feature Development.</small></p>
                         <ul class="list-unstyled small">
-                            <li><i class="fas fa-check text-success me-2"></i>Crucially contributed to the project's successful launch and ongoing refinement.</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Developed and maintained <strong>150+ robust endpoints</strong> for full-stack integration.</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Implemented automated content moderation, eliminating manual validation time.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Built backend from early stage to launch; designed and shipped <strong>150+ REST endpoints</strong>.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Implemented automated content moderation pipeline, reducing manual review time to near zero.</li>
                         </ul>
                         <p class="small mt-3">Stack: Django, DRF, Stripe, PostgreSQL, Celery.</p>
                     </div>
@@ -179,9 +198,8 @@
                         <h6 class="card-subtitle mb-2 text-muted">Online Gaming Platform (09/2021 - 02/2022)</h6>
                         <p class="card-text"><small class="text-muted">Role: Anti-Cheat Optimisation, Tooling.</small></p>
                         <ul class="list-unstyled small">
-                            <li><i class="fas fa-check text-success me-2"></i>Optimised anti-cheat algorithms, leading to a 50% reduction in false detections.</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Reduced false bans by 20% via smarter violation detection.</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Developed internal tools that enhanced the efficiency of over 30 administrators.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Optimised anti-cheat algorithms, reducing false detections by <strong>50%</strong> and false bans by <strong>20%</strong>.</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Built API and internal tools for a platform with <strong>1,000+ concurrent players</strong>.</li>
                         </ul>
                         <p class="small mt-3">Stack: Lua, Python, Django, DRF, ImGui.</p>
                     </div>
@@ -314,9 +332,10 @@
                 projects: () =>
                     [
                         "Latest projects:",
-                        "  - AI Translator Bot (voice + GPT workflows)",
-                        "  - LaPrompt marketplace (150+ endpoints)",
-                        "  - Trinity GTA tooling (anti-cheat automation)",
+                        "  - NextCRM SaaS (PostgreSQL RLS, 3h→15min sync, 1900+ tests)",
+                        "  - AI Translator Bot (voice + GPT workflows, Telegram/Discord/WhatsApp)",
+                        "  - LaPrompt marketplace (150+ endpoints, content moderation)",
+                        "  - Trinity GTA tooling (anti-cheat, -50% false detections)",
                     ].join("\n"),
                 contact: () => "Drop a line: support@invilso.pp.ua or use the contact form below.",
                 quote: () =>
